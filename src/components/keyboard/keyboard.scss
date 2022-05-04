@@ -1,0 +1,125 @@
+.keyboard {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0 auto;
+  padding: 5px 0;
+  background-color: #004134;
+  box-shadow: 0 0 50px rgb(0 0 0 / 50%);
+  user-select: none; // ?
+}
+
+.keyboard--hidden {
+  bottom: -100%;
+}
+
+.keyboard__keys {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.keyboard__key {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 6%;
+  max-width: 50px;
+  height: 45px;
+  padding: 4px;
+  border: none;
+  border-radius: 9px;
+  color: #ffffff;
+  font-size: 1.05em;
+  vertical-align: top;
+  background-color: rgba(255 255 255 / 20%);
+  background-clip: content-box;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 150ms ease 0s;
+
+  @media (width < 900px) {
+    height: 40px;
+    padding: 2px;
+
+    .material-icons {
+      font-size: 1.1em;
+    }
+  }
+
+  &:hover {
+    background-color: rgba(255 255 255 / 10%);
+  }
+
+  &--active {
+    background-color: rgb(203 236 83 / 81.9%);
+
+    &:hover {
+      background-color: rgb(203 236 83 / 81.9%);
+    }
+  }
+
+  &--wide {
+    width: 100%;
+    max-width: 100px;
+  }
+
+  &--fill {
+    width: 100%;
+    max-width: 80px;
+  }
+
+  &--shift-right {
+    width: 100%;
+    max-width: 150px;
+  }
+
+  &--extra-wide {
+    width: 36%;
+    max-width: 500px;
+  }
+
+  &--activatable {
+    &::after {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: rgba(0 0 0 / 40%);
+      content: "";
+
+      @media (width < 900px) {
+        top: 5px;
+        right: 5px;
+      }
+    }
+  }
+
+  &--caps-active::after {
+    background-color: #08ff00;
+  }
+
+  &--dark {
+    background-color: rgba(0 0 0 / 25%);
+  }
+}
+
+.textarea-box {
+  padding: 20px;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  min-height: 200px;
+  margin: 0 auto;
+  border: 2px solid#004134;
+  border-radius: 8px;
+  font-size: 18px;
+  resize: none;
+}
