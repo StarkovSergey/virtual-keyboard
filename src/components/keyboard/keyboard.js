@@ -166,29 +166,23 @@ export class Keyboard {
           keyElement.addEventListener('click', arrowRightHandler);
           this.#setKeydownHandler(arrowRightHandler, 'ArrowRight');
           break;
-          // case 'ShiftLeft': // TODO: implement
-          //   keyElement.classList.add('keyboard__key--fill');
-          //   keyElement.textContent = 'Shift';
-
-          //   const shiftLeftHandler = () => {
-          //     this.#toggleActiveClass(keyElement);
-          //     this.#toggleShift();
-          //   };
-
-        //   keyElement.addEventListener('click', shiftLeftHandler);
-        //   this.#setKeydownDoubleHandler(shiftLeftHandler, 'ShiftLeft');
-        //   break;
-        case 'ShiftRight': // TODO: implement
+        case 'ShiftLeft': // TODO: add shift right and left interaction
           keyElement.textContent = 'Shift';
-          keyElement.classList.add('keyboard__key--shift-right');
-
-          // const shiftRightHandler = () => {
-          //   this.#toggleShift();
-          // };
-
+          keyElement.classList.add('keyboard__key--activatable', 'keyboard__key--fil');
           keyElement.addEventListener('click', () => {
             this.#toggleActiveClass(keyElement);
-            console.log(this.toggleShift);
+            keyElement.classList.toggle('keyboard__key--shift-active');
+            this.toggleShift();
+          });
+          this.#setKeydownOneStartHandler(this.toggleShift, 'ShiftLeft');
+          break;
+
+        case 'ShiftRight':
+          keyElement.textContent = 'Shift';
+          keyElement.classList.add('keyboard__key--shift-right', 'keyboard__key--activatable');
+          keyElement.addEventListener('click', () => {
+            this.#toggleActiveClass(keyElement);
+            keyElement.classList.toggle('keyboard__key--shift-active');
             this.toggleShift();
           });
           this.#setKeydownOneStartHandler(this.toggleShift, 'ShiftRight');
@@ -351,10 +345,12 @@ export class Keyboard {
         const button = document.querySelector(`[data-keycode="${evtKey}"]`);
         button.classList.add('keyboard__key--active');
 
-        const keyupHandler = () => {
-          button.classList.remove('keyboard__key--active');
-          handler();
-          document.removeEventListener('keyup', keyupHandler);
+        const keyupHandler = (e) => {
+          if (e.code === evtKey) {
+            button.classList.remove('keyboard__key--active');
+            handler();
+            document.removeEventListener('keyup', keyupHandler);
+          }
         };
 
         if (!evt.repeat) {
