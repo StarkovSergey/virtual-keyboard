@@ -42,6 +42,7 @@ export class Keyboard {
   constructor(keyLayout) {
     this.keyLayout = keyLayout;
     this.toggleShift = this.toggleShift.bind(this);
+    this.changeLang = this.changeLang.bind(this);
   }
 
   init() {
@@ -67,6 +68,9 @@ export class Keyboard {
     this.textarea.addEventListener('click', () => {
       this.setTextareaSelectionEnd();
     });
+
+    // set handlers
+    this.#setChangeLangHandler();
   }
 
   #createKeys() {
@@ -387,5 +391,28 @@ export class Keyboard {
         key.textContent = this.properties.capsLock ? key.textContent.toUpperCase() : key.textContent.toLowerCase();
       }
     }
+  }
+
+  #setChangeLangHandler() {
+    const pressed = new Set();
+
+    document.addEventListener('keydown', (evt) => {
+      pressed.add(evt.key);
+
+      if (pressed.has('Control') && pressed.has('Alt')) {
+        this.changeLang();
+        pressed.clear();
+      }
+    });
+
+    document.addEventListener('keyup', (evt) => {
+      pressed.delete(evt.key);
+    });
+  }
+
+  changeLang() {
+    this.properties.lang = this.properties.lang === 'ru' ? 'en' : 'ru';
+    this.#setStatus();
+    this.#renderKeysText();
   }
 }

@@ -3,7 +3,7 @@
     "node": true,
     "browser": true
   },
-  "extends": ["airbnb/base"], //подключаем сборник правил
+  "extends": ["airbnb/base"],
   "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 2022,
