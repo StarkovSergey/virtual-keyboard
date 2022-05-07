@@ -13,7 +13,9 @@ export class Keyboard {
   };
 
   textarea;
+
   selectionEnd = 0;
+
   setTextareaSelectionEnd() {
     this.selectionEnd = this.textarea.selectionEnd;
   }
@@ -81,7 +83,6 @@ export class Keyboard {
   #createKeys() {
     const keys = [];
 
-    // creates HTML for an icon
     const createIconHTML = (iconName) => `<i class="material-icons">${iconName}</i>`;
 
     this.keyLayout.forEach((key) => {
@@ -199,7 +200,7 @@ export class Keyboard {
           keyElement.addEventListener('click', arrowRightHandler);
           this.#setKeydownHandler(arrowRightHandler, 'ArrowRight');
           break;
-        case 'ShiftLeft': // TODO: add shift right and left interaction
+        case 'ShiftLeft':
           keyElement.textContent = 'Shift';
           keyElement.classList.add('keyboard__key--activatable', 'keyboard__key--fill');
           keyElement.addEventListener('click', () => {

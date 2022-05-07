@@ -47,7 +47,7 @@ export const keyLayout = [
   ['ShiftLeft'],
   ['KeyZ', 'z', 'Z', 'я', 'Я'],
   ['KeyX', 'x', 'X', 'ч', 'Ч'],
-  ['KeyС', 'c', 'C', 'с', 'С'],
+  ['KeyC', 'c', 'C', 'с', 'С'],
   ['KeyV', 'v', 'V', 'м', 'М'],
   ['KeyB', 'b', 'B', 'и', 'И'],
   ['KeyN', 'n', 'N', 'т', 'Т'],

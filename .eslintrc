@@ -11,9 +11,7 @@
   },
   "ignorePatterns": ["postcss.config.js"],
   "rules": {
-    "no-plusplus": "off",
     "no-console": "off",
-    "strict": "off",
     "max-len": [
       "error",
       150,
@@ -21,16 +19,12 @@
         "ignoreUrls": true
       }
     ],
-    "no-alert": "off",
-    "prefer-destructuring": "off",
     "no-underscore-dangle": "off",
-    "max-classes-per-file": "off",
     "no-restricted-syntax": "off",
     "no-labels": "off",
     "import/extensions": "off",
     "import/prefer-default-export": "off",
-    "no-proto": "off",
-    "lines-between-class-members": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "class-methods-use-this": "off"
   }
 }
