@@ -1,5 +1,5 @@
 import { Keyboard } from './components/keyboard/keyboard.js';
-import { keyLayout } from './modules/const';
+import { keyLayout } from './modules/key-layout.js';
 
 document.body.innerHTML = `
 <div class="textarea-box">

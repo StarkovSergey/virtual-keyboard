@@ -5,6 +5,10 @@ body {
 .text-list {
   max-width: fit-content;
   margin: 0 auto;
+
+  @media (width < 600px) {
+    font-size: 14px;
+  }
 }
 
 .keyboard {
@@ -191,4 +195,8 @@ textarea {
   border-radius: 8px;
   font-size: 18px;
   resize: none;
+
+  @media (width < 600px) {
+    min-height: 100px;
+  }
 }
