@@ -89,31 +89,49 @@ export class Keyboard {
       keyElement.setAttribute('data-keyCode', key[0]);
 
       switch (key[0]) {
-        case 'MetaLeft': // TODO: implement
+        case 'MetaLeft':
           keyElement.innerHTML = createIconHTML('grid_view');
 
-          const windowKeyHandler = () => {
-            console.log('window');
-            this.#returnTextFocus();
+          const metaHandler = () => {
           };
 
-          keyElement.addEventListener('click', windowKeyHandler);
-          this.#setKeydownHandler(windowKeyHandler, 'Meta');
-          break;
-        case 'ControlRight':
-        case 'ControlLeft': // TODO: implement
-          keyElement.classList.add('keyboard__key--fill');
-          keyElement.textContent = 'Ctrl';
+          this.#setKeydownHandler(metaHandler, 'MetaLeft');
 
           keyElement.addEventListener('click', () => {
             this.#toggleActiveClass(keyElement);
-            console.log('key-up');
+            this.#returnTextFocus();
+          });
+          break;
+        case 'ControlRight':
+        case 'ControlLeft':
+          keyElement.classList.add('keyboard__key--fill');
+          keyElement.textContent = 'Ctrl';
+
+          const controlHandler = () => {
+          };
+
+          this.#setKeydownHandler(controlHandler, 'ControlLeft');
+          this.#setKeydownHandler(controlHandler, 'ControlRight');
+
+          keyElement.addEventListener('click', () => {
+            this.#toggleActiveClass(keyElement);
             this.#returnTextFocus();
           });
           break;
         case 'AltLeft':
         case 'AltRight':
           keyElement.innerHTML = createIconHTML('keyboard_option_key');
+
+          const altHandler = () => {
+          };
+
+          this.#setKeydownHandler(altHandler, 'AltLeft');
+          this.#setKeydownHandler(altHandler, 'AltRight');
+
+          keyElement.addEventListener('click', () => {
+            this.#toggleActiveClass(keyElement);
+            this.#returnTextFocus();
+          });
           break;
         case 'ArrowUp': // TODO: implement
           keyElement.innerHTML = createIconHTML('keyboard_arrow_up');
