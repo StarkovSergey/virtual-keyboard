@@ -138,16 +138,19 @@ export class Keyboard {
             this.#returnTextFocus();
           });
           break;
-        case 'ArrowUp': // TODO: implement
+        case 'ArrowUp':
           keyElement.innerHTML = createIconHTML('keyboard_arrow_up');
 
           const arrowUpHandler = () => {
-            this.#toggleActiveClass(keyElement);
-            console.log('key-down');
+            this.textarea.value = `${this.textarea.value.slice(0, this.selectionEnd)}↑${this.textarea.value.slice(this.selectionEnd)}`;
+            this.selectionEnd += 1;
             this.#returnTextFocus();
           };
 
-          keyElement.addEventListener('click', arrowUpHandler);
+          keyElement.addEventListener('click', () => {
+            this.#toggleActiveClass(keyElement);
+            arrowUpHandler();
+          });
           this.#setKeydownHandler(arrowUpHandler, 'ArrowUp');
 
           break;
@@ -165,15 +168,19 @@ export class Keyboard {
           keyElement.addEventListener('click', arrowLeftHandler);
           this.#setKeydownHandler(arrowLeftHandler, 'ArrowLeft');
           break;
-        case 'ArrowDown': // TODO: implement
+        case 'ArrowDown':
           keyElement.innerHTML = createIconHTML('keyboard_arrow_down');
 
           const arrowDownHandler = () => {
-            this.#toggleActiveClass(keyElement);
+            this.textarea.value = `${this.textarea.value.slice(0, this.selectionEnd)}↓${this.textarea.value.slice(this.selectionEnd)}`;
+            this.selectionEnd += 1;
             this.#returnTextFocus();
           };
 
-          keyElement.addEventListener('click', arrowDownHandler);
+          keyElement.addEventListener('click', () => {
+            this.#toggleActiveClass(keyElement);
+            arrowDownHandler();
+          });
           this.#setKeydownHandler(arrowDownHandler, 'ArrowDown');
 
           break;
@@ -202,7 +209,6 @@ export class Keyboard {
           });
           this.#setKeydownOneStartHandler(this.toggleShift, 'ShiftLeft');
           break;
-
         case 'ShiftRight':
           keyElement.textContent = 'Shift';
           keyElement.classList.add('keyboard__key--shift-right', 'keyboard__key--activatable');
