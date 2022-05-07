@@ -5,7 +5,7 @@
   width: 100%;
   margin: 0 auto;
   padding: 5px 0;
-  background-color: #004134;
+  background-color: #002a41;
   box-shadow: 0 0 50px rgb(0 0 0 / 50%);
   user-select: none; // ?
 }
@@ -49,6 +49,16 @@
     }
   }
 
+  @media (width < 610px) {
+    max-width: 80px;
+    padding: 1px;
+    font-size: 1em;
+
+    .material-icons {
+      font-size: 0.9em;
+    }
+  }
+
   &:hover {
     background-color: rgba(255 255 255 / 10%);
   }
@@ -64,21 +74,65 @@
   &--wide {
     width: 100%;
     max-width: 100px;
+
+    @media (width < 750px) {
+      max-width: 80px;
+    }
+
+    @media (width < 650px) {
+      max-width: 60px;
+    }
+
+    @media (width < 430px) {
+      max-width: 40px;
+    }
   }
 
   &--fill {
     width: 100%;
     max-width: 80px;
+
+    @media (width < 830px) {
+      max-width: 60px;
+    }
+
+    @media (width < 430px) {
+      max-width: 40px;
+    }
   }
 
   &--shift-right {
     width: 100%;
     max-width: 150px;
+
+    @media (width < 830px) {
+      max-width: 120px;
+    }
+
+    @media (width < 685px) {
+      max-width: 100px;
+    }
+
+    @media (width < 625px) {
+      max-width: 60px;
+    }
+
+    @media (width < 430px) {
+      max-width: 40px;
+    }
   }
 
   &--extra-wide {
     width: 36%;
     max-width: 500px;
+
+    @media (width < 500px) {
+      max-width: 130px;
+    }
+
+    @media (width < 430px) {
+      max-width: 100px;
+    }
   }
 
   &--activatable {

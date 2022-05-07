@@ -190,7 +190,7 @@ export class Keyboard {
           break;
         case 'ShiftLeft': // TODO: add shift right and left interaction
           keyElement.textContent = 'Shift';
-          keyElement.classList.add('keyboard__key--activatable', 'keyboard__key--fil');
+          keyElement.classList.add('keyboard__key--activatable', 'keyboard__key--fill');
           keyElement.addEventListener('click', () => {
             this.#toggleActiveClass(keyElement);
             keyElement.classList.toggle('keyboard__key--shift-active');
