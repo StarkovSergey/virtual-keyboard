@@ -50,10 +50,15 @@ export class Keyboard {
     this.elements.main = document.createElement('div');
     this.elements.keysContainer = document.createElement('div');
 
+    // get data from localStorage
+    this.properties.lang = localStorage.getItem('lang');
+
     // setup main elements
     this.elements.main.classList.add('keyboard', '1keyboard--hidden');
     this.elements.keysContainer.classList.add('keyboard__keys');
     this.elements.keysContainer.append(...this.#createKeys());
+    this.#setStatus();
+    this.#renderKeysText();
 
     this.elements.keys = this.elements.keysContainer.querySelectorAll('.keyboard__key');
 
@@ -165,7 +170,6 @@ export class Keyboard {
 
           const arrowDownHandler = () => {
             this.#toggleActiveClass(keyElement);
-            console.log('key-down');
             this.#returnTextFocus();
           };
 
@@ -339,9 +343,10 @@ export class Keyboard {
     this.elements.keys.forEach((key) => {
       const keyCode = key.dataset.keycode;
       const keyType = key.dataset.type;
+      const button = key;
 
       if (keyType === 'textKey') {
-        key.innerText = this.keyLayout.find((item) => item[0] === keyCode)[this.properties.status];
+        button.innerText = this.keyLayout.find((item) => item[0] === keyCode)[this.properties.status];
       }
     });
   }
@@ -352,7 +357,7 @@ export class Keyboard {
         evt.preventDefault();
         const button = document.querySelector(`[data-keycode="${evtKey}"]`);
         button.classList.add('keyboard__key--active');
-        document.addEventListener('keyup', (evt) => {
+        document.addEventListener('keyup', () => {
           button.classList.remove('keyboard__key--active');
         });
         handler();
@@ -432,5 +437,6 @@ export class Keyboard {
     this.properties.lang = this.properties.lang === 'ru' ? 'en' : 'ru';
     this.#setStatus();
     this.#renderKeysText();
+    localStorage.setItem('lang', this.properties.lang);
   }
 }

@@ -1,3 +1,12 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.text-list {
+  max-width: fit-content;
+  margin: 0 auto;
+}
+
 .keyboard {
   position: fixed;
   bottom: 0;
@@ -51,8 +60,9 @@
 
   @media (width < 610px) {
     max-width: 80px;
+    height: 30px;
     padding: 1px;
-    font-size: 1em;
+    font-size: 0.9em;
 
     .material-icons {
       font-size: 0.9em;

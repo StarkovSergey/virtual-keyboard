@@ -9,6 +9,7 @@
     "ecmaVersion": 2022,
     "sourceType": "module"
   },
+  "ignorePatterns": ["postcss.config.js"],
   "rules": {
     "no-plusplus": "off",
     "no-console": "off",
