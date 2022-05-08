@@ -3,7 +3,7 @@ import { keyLayout } from './modules/key-layout.js';
 
 document.body.innerHTML = `
 <div class="textarea-box">
-  <textarea class="use-keyboard-input" placeholder="нет войне"></textarea>
+  <textarea class="use-keyboard-input" placeholder="no war"></textarea>
 </div>
 <ul class="text-list">
   <li>Клавиатура создана в операционной системе Windows</li>

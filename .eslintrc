@@ -9,7 +9,7 @@
     "ecmaVersion": 2022,
     "sourceType": "module"
   },
-  "ignorePatterns": ["postcss.config.js"],
+  "ignorePatterns": ["postcss.config.js", "docs/"],
   "rules": {
     "no-console": "off",
     "max-len": [
@@ -21,7 +21,6 @@
     ],
     "no-underscore-dangle": "off",
     "no-restricted-syntax": "off",
-    "no-labels": "off",
     "import/extensions": "off",
     "import/prefer-default-export": "off",
     "import/no-extraneous-dependencies": "off",

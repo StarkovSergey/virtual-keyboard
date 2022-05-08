@@ -26,6 +26,8 @@ export class Keyboard {
     shift: false,
     status: 1, // 1 - english, 2 - english + shift, 3 - ru, 4 - ru + shift
     lang: 'en',
+    ctrl: false,
+    alt: false,
   };
 
   #setStatus() {
@@ -123,10 +125,27 @@ export class Keyboard {
             this.#toggleActiveClass(keyElement);
             this.#returnTextFocus();
           });
+
+          keyElement.addEventListener('mousedown', () => {
+            keyElement.classList.add('keyboard__key--active');
+            this.properties.ctrl = true;
+
+            document.addEventListener('mouseup', () => {
+              keyElement.classList.remove('keyboard__key--active');
+              this.properties.ctrl = false;
+            }, { once: true });
+          });
+
+          keyElement.addEventListener('mouseup', () => {
+            if (this.properties.alt) {
+              this.changeLang();
+            }
+          });
           break;
         case 'AltLeft':
         case 'AltRight':
           keyElement.innerHTML = createIconHTML('keyboard_option_key');
+          keyElement.dataset.keyName = 'alt';
 
           const altHandler = () => {
           };
@@ -137,6 +156,22 @@ export class Keyboard {
           keyElement.addEventListener('click', () => {
             this.#toggleActiveClass(keyElement);
             this.#returnTextFocus();
+          });
+
+          keyElement.addEventListener('mousedown', () => {
+            keyElement.classList.add('keyboard__key--active');
+            this.properties.alt = true;
+
+            document.addEventListener('mouseup', () => {
+              keyElement.classList.remove('keyboard__key--active');
+              this.properties.alt = false;
+            }, { once: true });
+          });
+
+          keyElement.addEventListener('mouseup', () => {
+            if (this.properties.ctrl) {
+              this.changeLang();
+            }
           });
           break;
         case 'ArrowUp':
