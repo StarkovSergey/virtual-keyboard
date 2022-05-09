@@ -1,0 +1,203 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.text-list {
+  max-width: fit-content;
+  margin: 0 auto;
+
+  @media (width < 600px) {
+    font-size: 14px;
+  }
+}
+
+.keyboard {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0 auto;
+  padding: 5px 0;
+  background-color: #002a41;
+  box-shadow: 0 0 50px rgb(0 0 0 / 50%);
+  user-select: none;
+}
+
+.keyboard--hidden {
+  bottom: -100%;
+}
+
+.keyboard__keys {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.keyboard__key {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 6%;
+  max-width: 50px;
+  height: 45px;
+  padding: 4px;
+  border: none;
+  border-radius: 9px;
+  color: #ffffff;
+  font-size: 1.05em;
+  vertical-align: top;
+  background-color: rgba(255 255 255 / 20%);
+  background-clip: content-box;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 150ms ease 0s;
+
+  @media (width < 900px) {
+    height: 40px;
+    padding: 2px;
+
+    .material-icons {
+      font-size: 1.1em;
+    }
+  }
+
+  @media (width < 610px) {
+    max-width: 80px;
+    height: 30px;
+    padding: 1px;
+    font-size: 0.9em;
+
+    .material-icons {
+      font-size: 0.9em;
+    }
+  }
+
+  &:hover {
+    background-color: rgba(255 255 255 / 10%);
+  }
+
+  &--active {
+    background-color: rgb(203 236 83 / 81.9%);
+
+    &:hover {
+      background-color: rgb(203 236 83 / 81.9%);
+    }
+  }
+
+  &--wide {
+    width: 100%;
+    max-width: 100px;
+
+    @media (width < 750px) {
+      max-width: 80px;
+    }
+
+    @media (width < 650px) {
+      max-width: 60px;
+    }
+
+    @media (width < 430px) {
+      max-width: 40px;
+    }
+  }
+
+  &--fill {
+    width: 100%;
+    max-width: 80px;
+
+    @media (width < 830px) {
+      max-width: 60px;
+    }
+
+    @media (width < 430px) {
+      max-width: 40px;
+    }
+  }
+
+  &--shift-right {
+    width: 100%;
+    max-width: 150px;
+
+    @media (width < 830px) {
+      max-width: 120px;
+    }
+
+    @media (width < 685px) {
+      max-width: 100px;
+    }
+
+    @media (width < 625px) {
+      max-width: 60px;
+    }
+
+    @media (width < 430px) {
+      max-width: 40px;
+    }
+  }
+
+  &--extra-wide {
+    width: 36%;
+    max-width: 500px;
+
+    @media (width < 500px) {
+      max-width: 130px;
+    }
+
+    @media (width < 430px) {
+      max-width: 100px;
+    }
+  }
+
+  &--activatable {
+    &::after {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: rgba(0 0 0 / 40%);
+      content: "";
+
+      @media (width < 900px) {
+        top: 5px;
+        right: 5px;
+      }
+    }
+  }
+
+  &--caps-active::after,
+  &--shift-active::after {
+    background-color: #08ff00;
+    box-shadow: 0 0 7px 2px #08ff00;
+  }
+
+  &--dark {
+    background-color: rgba(0 0 0 / 25%);
+  }
+}
+
+.keyboard__key--active.keyboard__key--activatable::after {
+  background-color: #08ff00;
+}
+
+.textarea-box {
+  padding: 20px;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  min-height: 200px;
+  margin: 0 auto;
+  border: 2px solid#004134;
+  border-radius: 8px;
+  font-size: 18px;
+  resize: none;
+
+  @media (width < 600px) {
+    min-height: 100px;
+  }
+}
